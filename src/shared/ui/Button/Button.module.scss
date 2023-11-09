@@ -9,3 +9,19 @@
     background: none;
     outline: none;
 }
+
+.background {
+    background: var(--bg-color);
+    color: var(--primary-color);
+    border: none;
+}
+.backgroundInverted {
+    background: var(--inverted-bg-color);
+    color: var(--inverted-primary-color);
+    border: none;
+}
+
+.square {
+    width: 40px;
+    height: 40px;
+}
