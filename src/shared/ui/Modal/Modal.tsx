@@ -9,6 +9,7 @@ import {
 import { Portal } from "../Portal/Portal";
 import { classNames } from "shared/lib/classNames/classNames";
 import cls from "./Modal.module.scss";
+import { useTheme } from "app/providers/ThemeProvider";
 
 interface ModalProps {
     className?: string;
@@ -22,7 +23,7 @@ const ANIMATION_DELAY = 300;
 export const Modal = ({ className, children, isOpen, onClose }: ModalProps) => {
     const [isClosing, setIsClosing] = useState(false);
     const timeRef = useRef<ReturnType<typeof setTimeout>>();
-
+    const { theme } = useTheme();
     const closeHandler = useCallback(() => {
         if (onClose) {
             setIsClosing(true);
