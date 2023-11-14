@@ -4,5 +4,10 @@
     "Короткий язык": "En",
     "О сайте": "About page",
     "Главная": "Main",
-    "Войти" : "Sign in"
+    "Войти": "Sign in",
+    "Выйти": "Log out",
+    "Вы ввели неверный логин или пароль": "Uncorrect login or password",
+    "Введите логин": "Enter your username",
+    "Введите пароль": "Enter your password",
+    "Форма авторизации": "Auth Form"
 }
