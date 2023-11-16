@@ -1,8 +1,8 @@
-import { classNames } from "shared/lib/classNames/classNames";
-import cls from "./LangSwitcher.module.scss";
 import { useTranslation } from "react-i18next";
 import i18next from "i18next";
+import { classNames } from "shared/lib/classNames/classNames";
 import { Button, ThemeButton } from "../Button/Button";
+import cls from "./LangSwitcher.module.scss";
 
 interface LangSwitcherProps {
     className?: string;
@@ -21,7 +21,8 @@ export const LangSwitcher = ({ className, short }: LangSwitcherProps) => {
             theme={ThemeButton.CLEAR_INVERTED}
             onClick={toggle}
         >
-            {/* i18next-extract-disable-line */ t(short ? "Короткий язык" : "Язык")}
+            {/* i18next-extract-disable-line */ 
+            t(short ? "Короткий язык" : "Язык")}
         </Button>
     );
 };

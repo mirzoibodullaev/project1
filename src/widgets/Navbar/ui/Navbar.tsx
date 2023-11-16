@@ -4,8 +4,7 @@ import { useTranslation } from "react-i18next";
 import { classNames } from "shared/lib/classNames/classNames";
 import { Button, ThemeButton } from "shared/ui/Button/Button";
 import { LoginModal } from "app/features/AuthByUsername";
-import { getUserAuthData } from "entities/User/model/selectors/getUserAuthData/getUserAuthData";
-import { userActions } from "entities/User";
+import {getUserAuthData, userActions } from "entities/User";
 import cls from "./Navbar.module.scss";
 
 interface NavbarProps {
