@@ -19,7 +19,7 @@ const ProfilePage = memo(({ className }: ProfilePageProps) => {
     return (
         <DynamicModuleLoader reducers={reducers} removeAfterUnmount>
             <div className={classNames("", {}, [className])}>
-                {t("Profile Page")}
+                {t("Страница профилья")}
             </div>
         </DynamicModuleLoader>
     );

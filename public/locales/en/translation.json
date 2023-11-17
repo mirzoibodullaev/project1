@@ -6,8 +6,9 @@
     "Главная": "Main",
     "Войти": "Sign in",
     "Выйти": "Log out",
-    "Вы ввели неверный логин или пароль": "Uncorrect login or password",
+    "Вы ввели неверный логин или паролrь": "Uncorrect login or password",
     "Введите логин": "Enter your username",
     "Введите пароль": "Enter your password",
-    "Форма авторизации": "Auth Form"
+    "Форма авторизации": "Auth Form",
+    "Страница профилья": "Profile page"
 }
