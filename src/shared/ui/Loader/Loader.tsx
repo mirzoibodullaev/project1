@@ -1,11 +1,12 @@
 import { classNames } from "shared/lib/classNames/classNames";
 import "./Loader.scss";
+import { memo } from "react";
 
 interface LoaderProps {
     className?: string;
 }
 
-const Loader = ({ className }: LoaderProps) => {
+const Loader = memo(({ className }: LoaderProps) => {
     return (
         <div className={classNames("lds-ellipsis", {}, [className])}>
             <div></div>
@@ -14,6 +15,6 @@ const Loader = ({ className }: LoaderProps) => {
             <div></div>
         </div>
     );
-};
+});
 
 export default Loader;

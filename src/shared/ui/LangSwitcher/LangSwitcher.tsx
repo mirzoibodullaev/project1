@@ -1,3 +1,4 @@
+import { memo } from "react";
 import { useTranslation } from "react-i18next";
 import i18next from "i18next";
 import { classNames } from "shared/lib/classNames/classNames";
@@ -9,7 +10,7 @@ interface LangSwitcherProps {
     short?: boolean;
 }
 
-export const LangSwitcher = ({ className, short }: LangSwitcherProps) => {
+export const LangSwitcher = memo(({ className, short }: LangSwitcherProps) => {
     const { t } = useTranslation();
     const toggle = () => {
         i18next.changeLanguage(i18next.language === "ru" ? "en" : "ru");
@@ -21,8 +22,10 @@ export const LangSwitcher = ({ className, short }: LangSwitcherProps) => {
             theme={ThemeButton.CLEAR_INVERTED}
             onClick={toggle}
         >
-            {/* i18next-extract-disable-line */ 
-            t(short ? "Короткий язык" : "Язык")}
+            {
+                /* i18next-extract-disable-line */
+                t(short ? "Короткий язык" : "Язык")
+            }
         </Button>
     );
-};
+});
