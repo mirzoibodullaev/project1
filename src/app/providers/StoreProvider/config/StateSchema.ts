@@ -10,6 +10,7 @@ import { AxiosInstance } from "axios";
 import { LoginSchema } from "app/features/AuthByUsername";
 import { ProfileSchema } from "entities/Profile";
 import { UserSchema } from "entities/User";
+import { Dispatch } from "redux";
 
 export interface StateSchema {
     user: UserSchema;
@@ -37,7 +38,11 @@ export interface ReduxStoreWithManager extends EnhancedStore<StateSchema> {
 
 export interface ThunkExtraArg {
     api: AxiosInstance;
-    navigate: (to: To, options?: NavigateOptions) => void;
+    navigate?: (to: To, options?: NavigateOptions) => void;
 }
 
-
+export interface ThunkConfig<T> {
+    rejectValue: T;
+    extra: ThunkExtraArg;
+    dispatch?: Dispatch;
+}
