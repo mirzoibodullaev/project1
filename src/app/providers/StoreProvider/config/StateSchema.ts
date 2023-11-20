@@ -5,12 +5,13 @@ import {
     Reducer,
     ReducersMapObject,
 } from "@reduxjs/toolkit";
+import { Dispatch } from "redux";
 import { NavigateOptions, To } from "react-router-dom";
 import { AxiosInstance } from "axios";
 import { LoginSchema } from "app/features/AuthByUsername";
 import { ProfileSchema } from "entities/Profile";
 import { UserSchema } from "entities/User";
-import { Dispatch } from "redux";
+import { ArticleDetailsShema } from "entities/Article";
 
 export interface StateSchema {
     user: UserSchema;
@@ -18,6 +19,7 @@ export interface StateSchema {
     // Async reducers
     loginForm?: LoginSchema;
     profile?: ProfileSchema;
+    articleDetails?: ArticleDetailsShema;
 }
 
 export type StateSchemaKey = keyof StateSchema;
