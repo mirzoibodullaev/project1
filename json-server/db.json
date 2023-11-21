@@ -107,21 +107,23 @@
             "id": "1",
             "username": "admin",
             "password": "123",
-            "role": "ADMIN"
+            "role": "ADMIN",
+            "avatar": "https://cdn.vectorstock.com/i/preview-1x/68/97/programmer-computer-expert-rgb-color-icon-vector-37206897.jpg"
         },
         {
             "id": "2",
             "username": "user",
             "password": "123",
-            "role": "USER"
+            "role": "USER",
+            "avatar": "https://cdn.vectorstock.com/i/preview-1x/68/97/programmer-computer-expert-rgb-color-icon-vector-37206897.jpg"
         }
     ],
     "profile": {
         "firstName": "Мирзо",
         "lastName": "Ибодуллаев",
         "age": 20,
-        "currency": "UZS",
-        "country": "Uzbekistan",
+        "currency": "RUB",
+        "country": "Russia",
         "city": "Tashkent",
         "username": "admin",
         "avatar": "https://cdn.vectorstock.com/i/preview-1x/68/97/programmer-computer-expert-rgb-color-icon-vector-37206897.jpg"
