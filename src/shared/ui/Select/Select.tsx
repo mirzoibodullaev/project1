@@ -26,13 +26,15 @@ export const Select = memo(
 
         const optionList = useMemo(() => {
             return options?.map((option) => {
-                <option
-                    className={cls.option}
-                    value={option.value}
-                    key={option.value}
-                >
-                    {option.content}
-                </option>;
+                return (
+                    <option
+                        className={cls.option}
+                        value={option.value}
+                        key={option.value}
+                    >
+                        {option.content}
+                    </option>
+                );
             });
         }, [options]);
 
