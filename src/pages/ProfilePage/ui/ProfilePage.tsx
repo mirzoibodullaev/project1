@@ -1,3 +1,4 @@
+import { useParams } from "react-router-dom";
 import {
     ProfileCard,
     ValidateProfileError,
@@ -39,6 +40,7 @@ const ProfilePage = memo(({ className }: ProfilePageProps) => {
     const isLoading = useSelector(getProfileIsLoading);
     const readonly = useSelector(getProfileReadonly);
     const validateErrors = useSelector(getProfileValidateErrors);
+    const { id } = useParams<{ id: string }>();
 
     const validateErrorTranslates = {
         [ValidateProfileError.INCORRECT_AGE]: t("Некорректный возраст"),
@@ -53,7 +55,9 @@ const ProfilePage = memo(({ className }: ProfilePageProps) => {
     };
 
     useEffect(() => {
-        dispatch(fetchProfileData());
+        if (id) {
+            dispatch(fetchProfileData(id));
+        }
     }, [dispatch]);
 
     const onChangeFirstname = useCallback(

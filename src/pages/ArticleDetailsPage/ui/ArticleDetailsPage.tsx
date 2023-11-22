@@ -1,12 +1,10 @@
-import { memo, useEffect } from "react";
+import { memo, useCallback, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { ArticleDetails } from "entities/Article";
 import { useTranslation } from "react-i18next";
 import { Text } from "shared/ui/Text/Text";
 import { CommentList } from "entities/Comment";
 import { classNames } from "shared/lib/classNames/classNames";
-
-import cls from "./ArticleDetailsPage.module.scss";
 import DynamicModuleLoader, {
     ReducersList,
 } from "shared/lib/DynamicModuleLoader/DynamicModuleLoader";
@@ -19,8 +17,10 @@ import {
     getArticleCommentsError,
     getArticleCommentsIsLoading,
 } from "../model/selectors/comments";
-import { fetchArticleById } from "entities/Article/model/services/fetchArticleById/fetchArticleById";
 import { fetchCommentsByArticleId } from "../model/services/fetchCommentsByArticleId/fetchCommentsByArticleId";
+import { AddCommentForm } from "app/features/addCommentForm";
+import { addCommentForArticle } from "../model/services/sendComment/addCommentForArticle";
+import cls from "./ArticleDetailsPage.module.scss";
 
 interface ArticleDetailsPageProps {
     className?: string;
@@ -38,6 +38,13 @@ const ArticleDetailsPage = ({ className }: ArticleDetailsPageProps) => {
     const commentsIsLoading = useSelector(getArticleCommentsIsLoading);
     const commentsError = useSelector(getArticleCommentsError);
 
+    const onSendComment = useCallback(
+        (text: string) => {
+            dispatch(addCommentForArticle(text));
+        },
+        [dispatch]
+    );
+
     useEffect(() => {
         dispatch(fetchCommentsByArticleId(id));
     }, []);
@@ -52,6 +59,7 @@ const ArticleDetailsPage = ({ className }: ArticleDetailsPageProps) => {
             >
                 <ArticleDetails id={id} />
                 <Text className={cls.commentsTitle} title={t("Комментарии")} />
+                <AddCommentForm onSendComment={onSendComment} />
                 <CommentList
                     isLoading={commentsIsLoading}
                     comments={comments}
