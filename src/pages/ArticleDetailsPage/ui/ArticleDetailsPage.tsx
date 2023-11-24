@@ -1,5 +1,5 @@
 import { memo, useCallback, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { ArticleDetails } from "entities/Article";
 import { useTranslation } from "react-i18next";
 import { Text } from "shared/ui/Text/Text";
@@ -21,6 +21,8 @@ import { fetchCommentsByArticleId } from "../model/services/fetchCommentsByArtic
 import { AddCommentForm } from "app/features/addCommentForm";
 import { addCommentForArticle } from "../model/services/sendComment/addCommentForArticle";
 import cls from "./ArticleDetailsPage.module.scss";
+import { Button, ThemeButton } from "shared/ui/Button/Button";
+import { RoutePath } from "shared/config/routeConfig/routeConfig";
 
 interface ArticleDetailsPageProps {
     className?: string;
@@ -36,7 +38,11 @@ const ArticleDetailsPage = ({ className }: ArticleDetailsPageProps) => {
     const dispatch = useDispatch();
     const comments = useSelector(getArticleComments.selectAll);
     const commentsIsLoading = useSelector(getArticleCommentsIsLoading);
-    const commentsError = useSelector(getArticleCommentsError);
+    const navigate = useNavigate();
+
+    const onBackToList = useCallback(() => {
+        navigate(RoutePath.articles);
+    }, [navigate]);
 
     const onSendComment = useCallback(
         (text: string) => {
@@ -57,6 +63,9 @@ const ArticleDetailsPage = ({ className }: ArticleDetailsPageProps) => {
             <div
                 className={classNames(cls.ArticleDetailsPage, {}, [className])}
             >
+                <Button onClick={onBackToList} theme={ThemeButton.OUTLINE}>
+                    {t("Назад к списку")}
+                </Button>
                 <ArticleDetails id={id} />
                 <Text className={cls.commentsTitle} title={t("Комментарии")} />
                 <AddCommentForm onSendComment={onSendComment} />
