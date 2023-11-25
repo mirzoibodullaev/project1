@@ -14,6 +14,7 @@ import { UserSchema } from "entities/User";
 import { ArticleDetailsShema } from "entities/Article";
 import { ArticleDetailsCommentsSchema } from "pages/ArticleDetailsPage";
 import { AddCommentFormSchema } from "app/features/addCommentForm";
+import { ArticlePageSchema } from "pages/ArticlesPage";
 
 export interface StateSchema {
     user: UserSchema;
@@ -24,6 +25,7 @@ export interface StateSchema {
     articleDetails?: ArticleDetailsShema;
     articleDetailsComments?: ArticleDetailsCommentsSchema;
     addCommentForm?: AddCommentFormSchema;
+    articlesPage?: ArticlePageSchema;
 }
 
 export type StateSchemaKey = keyof StateSchema;
