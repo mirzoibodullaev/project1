@@ -8,11 +8,10 @@ import { userReducer } from "entities/User";
 import { StateSchema } from "./StateSchema";
 import { createReducerManager } from "./reducerManager";
 import { $api } from "shared/api/api";
-import { NavigateOptions, To } from "react-router-dom";
+
 
 export function createReduxStore(
     initialState?: StateSchema,
-    navigate?: (to: To, options?: NavigateOptions) => void
 ) {
     const rootReducers: ReducersMapObject<StateSchema> = {
         user: userReducer,
@@ -29,7 +28,6 @@ export function createReduxStore(
                 thunk: {
                     extraArgument: {
                         api: $api,
-                        navigate,
                     },
                 },
             }),
