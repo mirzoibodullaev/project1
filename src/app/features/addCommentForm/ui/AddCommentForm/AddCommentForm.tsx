@@ -45,7 +45,7 @@ const AddCommentForm = ({ className, onSendComment }: AddCommentFormProps) => {
         <DynamicModuleLoader reducers={reducers}>
             <div className={classNames(cls.AddCommentForm, {}, [className])}>
                 <Input
-                    value={text || ""}
+                    value={text}
                     className={cls.input}
                     onChange={onCommentTextChange}
                     placeholder={t("Введите текст комментария")}
