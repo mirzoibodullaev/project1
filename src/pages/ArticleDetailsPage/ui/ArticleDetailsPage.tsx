@@ -13,16 +13,14 @@ import {
     getArticleComments,
 } from "../model/slices/articleDetailsCommentsSlice";
 import { useDispatch, useSelector } from "react-redux";
-import {
-    getArticleCommentsError,
-    getArticleCommentsIsLoading,
-} from "../model/selectors/comments";
+import { getArticleCommentsIsLoading } from "../model/selectors/comments";
 import { fetchCommentsByArticleId } from "../model/services/fetchCommentsByArticleId/fetchCommentsByArticleId";
 import { AddCommentForm } from "app/features/addCommentForm";
 import { addCommentForArticle } from "../model/services/sendComment/addCommentForArticle";
-import cls from "./ArticleDetailsPage.module.scss";
 import { Button, ThemeButton } from "shared/ui/Button/Button";
 import { RoutePath } from "shared/config/routeConfig/routeConfig";
+import { Page } from "shared/ui/Page/Page";
+import cls from "./ArticleDetailsPage.module.scss";
 
 interface ArticleDetailsPageProps {
     className?: string;
@@ -56,13 +54,11 @@ const ArticleDetailsPage = ({ className }: ArticleDetailsPageProps) => {
     }, []);
 
     if (!id) {
-        return <div>{t("Статья не найдена")}</div>;
+        return <Page>{t("Статья не найдена")}</Page>;
     }
     return (
         <DynamicModuleLoader reducers={reducers} removeAfterUnmount>
-            <div
-                className={classNames(cls.ArticleDetailsPage, {}, [className])}
-            >
+            <Page>
                 <Button onClick={onBackToList} theme={ThemeButton.OUTLINE}>
                     {t("Назад к списку")}
                 </Button>
@@ -73,7 +69,7 @@ const ArticleDetailsPage = ({ className }: ArticleDetailsPageProps) => {
                     isLoading={commentsIsLoading}
                     comments={comments}
                 />
-            </div>
+            </Page>
         </DynamicModuleLoader>
     );
 };

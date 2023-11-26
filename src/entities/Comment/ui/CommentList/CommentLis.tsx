@@ -4,7 +4,6 @@ import { Text } from "shared/ui/Text/Text";
 import { CommentCard } from "../CommentCard/CommentCard";
 import { useTranslation } from "react-i18next";
 import cls from "./CommentList.module.scss";
-import { ids } from "webpack";
 
 interface CommentListProps {
     className?: string;
@@ -21,19 +20,19 @@ export const CommentList = ({
     if (isLoading) {
         return (
             <div className={classNames(cls.CommentList, {}, [className])}>
-                <CommentCard isLoading/>
-                <CommentCard isLoading/>
-                <CommentCard isLoading/>
+                <CommentCard isLoading />
+                <CommentCard isLoading />
+                <CommentCard isLoading />
             </div>
         );
     }
     return (
         <div className={classNames(cls.CommentList, {}, [className])}>
             {comments?.length ? (
-                comments.map((comment, index) => {
+                comments.map((comment) => {
                     return (
                         <CommentCard
-                            key={index}
+                            key={comment.id}
                             isLoading={isLoading}
                             className={cls.comment}
                             comment={comment}

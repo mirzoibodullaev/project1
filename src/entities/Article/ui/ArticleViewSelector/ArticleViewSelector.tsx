@@ -35,6 +35,7 @@ export const ArticleViewSelector = ({
             {viewTypes.map((viewType) => {
                 return (
                     <Button
+                        key={viewType.view}
                         onClick={onClick(viewType.view)}
                         theme={ThemeButton.CLEAR}
                     >
