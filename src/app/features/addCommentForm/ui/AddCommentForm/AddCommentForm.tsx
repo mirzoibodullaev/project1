@@ -3,10 +3,7 @@ import { Input } from "shared/ui/Input/Input";
 import { Button, ThemeButton } from "shared/ui/Button/Button";
 import { useTranslation } from "react-i18next";
 import { useSelector } from "react-redux";
-import {
-    getAddCommentFormError,
-    getAddCommentFormText,
-} from "../../model/selectors/addCommentFormSelectors";
+import { getAddCommentFormText } from "../../model/selectors/addCommentFormSelectors";
 import { useCallback } from "react";
 import { useAppDispatch } from "shared/lib/hooks/useAppDispatch/useAppDispatch";
 import {
@@ -30,9 +27,9 @@ const reducers: ReducersList = {
 const AddCommentForm = ({ className, onSendComment }: AddCommentFormProps) => {
     const { t } = useTranslation();
     const text = useSelector(getAddCommentFormText);
-    const error = useSelector(getAddCommentFormError);
+
     const dispatch = useAppDispatch();
-    
+
     const onCommentTextChange = useCallback(
         (value: string) => {
             dispatch(AddCommentFormActions.setText(value));
@@ -48,7 +45,7 @@ const AddCommentForm = ({ className, onSendComment }: AddCommentFormProps) => {
         <DynamicModuleLoader reducers={reducers}>
             <div className={classNames(cls.AddCommentForm, {}, [className])}>
                 <Input
-                    value={text}
+                    value={text || ""}
                     className={cls.input}
                     onChange={onCommentTextChange}
                     placeholder={t("Введите текст комментария")}
