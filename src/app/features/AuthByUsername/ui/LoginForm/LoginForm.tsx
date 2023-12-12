@@ -56,6 +56,22 @@ const LoginForm = memo(({ className, onSucces }: LoginFormProps) => {
         }
     }, [onSucces, dispatch, username, password]);
 
+    const handleKeyDown = useCallback(
+        (e: KeyboardEvent) => {
+            if (e.key === "Enter") {
+                onLoginClick();
+            }
+        },
+        [onLoginClick]
+    );
+
+    useEffect(() => {
+        document.addEventListener("keydown", handleKeyDown);
+        return () => {
+            document.removeEventListener("keydown", handleKeyDown);
+        };
+    }, [handleKeyDown]);
+
     return (
         <DynamicModuleLoader reducers={initReducers}>
             <div className={classNames(cls.LoginForm, {}, [className])}>
